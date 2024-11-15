@@ -6,6 +6,7 @@ import Hero from '@/sections/Hero'
 import Navbar from '@/sections/Navbar'
 import About from '@/sections/About'
 import Experience from '@/sections/Experience'
+import Contact from '@/sections/Contact'
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
         <Hero />
         <About />
         <Experience />
+        <Contact />
       </main>
       <SocialIcons />
       <Email />
