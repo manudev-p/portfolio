@@ -7,6 +7,7 @@ import Navbar from '@/sections/Navbar'
 import About from '@/sections/About'
 import Experience from '@/sections/Experience'
 import Contact from '@/sections/Contact'
+import Projects from '@/sections/Projects'
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         <Hero />
         <About />
         <Experience />
+        <Projects />
         <Contact />
       </main>
       <SocialIcons />
