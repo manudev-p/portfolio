@@ -1,9 +1,11 @@
 import Head from 'next/head'
+
 import Email from '@/components/Email'
 import SocialIcons from '@/components/SocialIcons'
 import Hero from '@/sections/Hero'
 import Navbar from '@/sections/Navbar'
 import About from '@/sections/About'
+import Experience from '@/sections/Experience'
 
 export default function Home() {
   return (
@@ -18,6 +20,7 @@ export default function Home() {
       <main>
         <Hero />
         <About />
+        <Experience />
       </main>
       <SocialIcons />
       <Email />
