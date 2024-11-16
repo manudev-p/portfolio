@@ -11,7 +11,7 @@ function Projects() {
       projectName: 'Pokedex',
       projectLink: 'https://netlify.com',
       projectDescription:
-        "This is a web application that uses the PokeAPI to display information about different Pokemon, including their evolution levels and details. You can compare multiple Pokemon using a queue, and add them to your personal list using Firebase's Firestore database.",
+        " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.",
       projectTech: [
         'React',
         'Redux Toolkit',
@@ -30,7 +30,7 @@ function Projects() {
       projectName: 'Realtime Chat App',
       projectLink: 'https://netlify.com',
       projectDescription:
-        'This is a chat app made with React and Node.js that sends real-time messages and is highly scalable. It uses advanced JavaScript concepts like debouncing and is optimized for React. It has 300+ stars on GitHub and over 180k views on YouTube.',
+        " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.",
       projectTech: [
         'React',
         'Sockets',
@@ -49,7 +49,7 @@ function Projects() {
       projectName: 'Netflix App',
       projectLink: 'https://netlify.com',
       projectDescription:
-        'I made a Netflix copy with TMBD Api. It has infinite scrolling and lets you watch movies by genre. You can also add movies to your favorites list.',
+        " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.",
       projectTech: [
         'React',
         'Node.js',

@@ -1,5 +1,44 @@
+import { Fragment } from 'react'
+
 import Link from 'next/link'
 import Image from 'next/image'
+import LinkC from '@/components/LinkC'
+
+interface Link {
+  href: string
+  text: string
+}
+
+interface Links {
+  [key: string]: Link
+}
+
+const ABOUT_PARAGRAPH: string[] = [
+  "Lorem Ipsum is simply dummy text {LINK1} of the printing and typesetting industry. {LINK2} Lorem Ipsum has been {LINK3} the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.",
+  "Lorem Ipsum is simply dummy text {LINK2} of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.",
+  "Lorem Ipsum is simply dummy text {LINK3} of the printing and typesetting industry. Lorem {LINK1} Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type."
+]
+
+const LINKS: Links = {
+  LINK1: { href: 'coso1.com', text: 'link to coso1' },
+  LINK2: { href: 'coso1.com', text: 'link to coso2' },
+  LINK3: { href: 'coso1.com', text: 'link to coso3' }
+}
+
+const replaceLinks = (text: string, LINKS: Links): JSX.Element[] => {
+  const regex = /\{LINK(\d+)\}/g
+  const parts = text.split(regex)
+
+  return parts.flatMap((part, index) => {
+    if (index % 2 === 0) {
+      return <Fragment key={index}>{part}</Fragment>
+    } else {
+      const linkNumber = part.match(/\d+/)![0]
+      const link = LINKS[`LINK${linkNumber}`]
+      return <LinkC key={index} href={link.href} text={link.text} />
+    }
+  })
+}
 
 function About() {
   return (
@@ -9,37 +48,19 @@ function About() {
       </div>
       <div className="about-grid">
         <div className="about-grid-info">
-          <p className="about-grid-info-text">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type.
-          </p>
-          <p className="about-grid-info-text">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type.
-          </p>
-          <Link href="coso.com" className="link" target="_blank">
-            {' '}
-            coso
-          </Link>
-          <p className="about-grid-info-text">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type.
-          </p>
-          <p className="about-grid-info-text">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type.
-          </p>
+          {ABOUT_PARAGRAPH.map(paragraph => (
+            <p className="about-grid-info-text">
+              {replaceLinks(paragraph, LINKS)}
+            </p>
+          ))}
+
           <ul className="about-grid-info-list">
             <li className="about-grid-info-list-item">React</li>
             <li className="about-grid-info-list-item">Next.js</li>
             <li className="about-grid-info-list-item">Typescript</li>
-            <li className="about-grid-info-list-item">ElasticSearch</li>
             <li className="about-grid-info-list-item">Kibana</li>
             <li className="about-grid-info-list-item">Css</li>
+            <li className="about-grid-info-list-item">ElasticSearch</li>
           </ul>
         </div>
         <div className="about-grid-photo">
