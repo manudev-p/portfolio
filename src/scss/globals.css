@@ -1,3 +1,15 @@
+:root {
+  --navy-shadow: rgba(2, 12, 27, 0.7);
+  --background-color: #0a192f;
+  --lightest-navy: #233554;
+  --light-navy: #112240;
+  --dark-slate: #495670;
+  --slate: #8892b0;
+  --light-slate: #ccd6f6;
+  --lightest-slate: #a8b2d1;
+  --theme-color: #9d00ff;
+}
+
 ::-moz-selection {
   color: white;
   background: var(--theme-color);
@@ -48,33 +60,4 @@ html {
   background-color: var(--dark-slate);
   border: 3px solid var(--background-color);
   border-radius: 10px;
-}
-
-.link {
-  text-decoration: none;
-  display: inline block;
-  position: relative;
-  color: var(--theme-color);
-  &:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 0.5px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--theme-color);
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
-  }
-  &:hover,
-  &:focus {
-    &::after {
-      transform: scaleX(1);
-      transform-origin: bottom left;
-    }
-  }
-  &:focus {
-    outline: none;
-  }
 }

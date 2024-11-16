@@ -20,7 +20,6 @@
     color: var(--lightest-slate);
   }
   &-text {
-    text-align: justify;
     color: var(--slate);
     margin-right: 40%;
     font-size: var(--tlarge);
@@ -33,8 +32,12 @@
     margin-top: 2rem;
     .btn {
       padding: 1rem 2rem;
-      font-size: var(--tlarge);
-      font-family: var(--raleway);
+      font-size: var(--tsm1);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    &-text {
+      width: 90%;
     }
   }
 }
