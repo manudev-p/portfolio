@@ -15,7 +15,7 @@ nav {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 3rem;
+        height: 0px;
         width: 3rem;
         fill: none;
         margin: 2rem 0;
@@ -110,10 +110,10 @@ nav {
     }
   }
   .blur-nav {
-    height: 80px;
+    height: 64px;
     position: fixed;
     top: 0;
-    transition: 0.3s ease-in-out;
+    transition: 0.9s ease-in-out;
     z-index: 100;
     background-color: rgba(10, 25, 47, 0.85);
     box-shadow: 0 10px 30px -10px var(--navy-shadow);

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Logo from '@/components/Logo'
 import Button from '@/components/Button'
+import { useEffect, useState } from 'react'
 
 const RESUME_LINK = '/resume.pdf'
 const LOGO_LINK = '/resume.pdf'
@@ -16,9 +17,16 @@ const SECTION_LINKS = [
 ]
 
 function Navbar() {
+  const [navBarVisible, setNavBarVisible] = useState(false)
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      window.scrollY > 0.05 ? setNavBarVisible(true) : setNavBarVisible(false)
+    })
+  })
   return (
     <nav>
-      <div className="wrapper">
+      <div className={`wrapper ${navBarVisible ? 'blur-nav' : ''}`}>
         <div className="brand">
           <Link href={LOGO_LINK}>
             <Logo />
