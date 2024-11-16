@@ -1,53 +1,137 @@
-import Link from 'next/link'
-import Logo from '@/components/Logo'
-import Button from '@/components/Button'
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 
-const RESUME_LINK = '/resume.pdf'
-const LOGO_LINK = '/resume.pdf'
+import Button from '@/components/Button'
+import Logo from '@/components/Logo'
 
-const SECTION_LINKS = [
-  {
-    name: 'About',
-    link: '/#about'
-  },
+import { GiHamburgerMenu } from 'react-icons/gi'
+import { CgClose } from 'react-icons/cg'
+import { motion } from 'framer-motion'
+
+const NAVBAR_LINKS = [
+  { name: 'About', link: '/#about' },
   { name: 'Experience', link: '/#experience' },
   { name: 'Work', link: '/#work' },
-  { name: 'Contact', link: '/#contact' }
+  {
+    name: 'Contact',
+    link: '/#contact'
+  }
 ]
+const NAVBAR_RESUME = 'http://localhost:3000/resume.pdf'
 
 function Navbar() {
-  const [navBarVisible, setNavBarVisible] = useState(false)
+  const [navbarVisible, setNavbarVisible] = useState(false)
+  const [responsiveNavVisible, setResponsiveNavVisible] = useState(false)
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      window.scrollY > 0.05 ? setNavBarVisible(true) : setNavBarVisible(false)
+      window.scrollY > 100 ? setNavbarVisible(true) : setNavbarVisible(false)
     })
-  })
+  }, [])
+
+  useEffect(() => {
+    const links = document.querySelectorAll('.nav-items-list-item-link')
+    links.forEach(link => {
+      link.addEventListener('click', () => setResponsiveNavVisible(false))
+    })
+    const nav = document.querySelector('.nav-items')
+    nav?.addEventListener('click', e => {
+      e.stopPropagation()
+    })
+    const html = document.querySelector('html')
+    html?.addEventListener('click', e => {
+      setResponsiveNavVisible(false)
+    })
+  }, [])
+
+  useEffect(() => {
+    const main = document.querySelector('main')
+    if (responsiveNavVisible) {
+      main?.classList.add('blur')
+    } else {
+      main?.classList.remove('blur')
+    }
+  }, [responsiveNavVisible])
+
   return (
     <nav>
-      <div className={`wrapper ${navBarVisible ? 'blur-nav' : ''}`}>
-        <div className="brand">
-          <Link href={LOGO_LINK}>
+      <div className={`wrapper ${navbarVisible ? 'blur-nav' : ''}`}>
+        <motion.div
+          className="brand"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 0.3,
+            ease: 'easeInOut'
+          }}
+        >
+          <Link href="kishansheth.com">
             <Logo />
           </Link>
-        </div>
-        <div className="nav-items">
+        </motion.div>
+        <motion.div
+          className="nav-responsive-toggle"
+          initial={{ opacity: 0, y: 5 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.3,
+            ease: 'easeInOut'
+          }}
+        >
+          {responsiveNavVisible ? (
+            <CgClose
+              onClick={e => {
+                e.stopPropagation()
+                setResponsiveNavVisible(false)
+              }}
+            />
+          ) : (
+            <GiHamburgerMenu
+              onClick={e => {
+                e.stopPropagation()
+                setResponsiveNavVisible(true)
+              }}
+            />
+          )}
+        </motion.div>
+        <div
+          className={`${responsiveNavVisible && 'nav-responsive'} nav-items`}
+        >
           <ul className="nav-items-list">
-            {SECTION_LINKS.map(({ name, link }) => (
-              <li key={name} className="nav-items-list-item">
+            {NAVBAR_LINKS.map(({ name, link }, index) => (
+              <motion.li
+                key={name}
+                className="nav-items-list-item"
+                initial={{ opacity: 0, y: -25 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.3,
+                  ease: 'easeInOut',
+                  delay: 0.3 + index * 0.1
+                }}
+              >
                 <Link href={link} className="nav-items-list-item-link">
                   {name}
                 </Link>
-              </li>
+              </motion.li>
             ))}
           </ul>
-          <div className="nav-items-button">
-            <Button text="Resume" link={RESUME_LINK}></Button>
-          </div>
+          <motion.div
+            className="nav-items-button"
+            initial={{ opacity: 0, y: -25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.3,
+              ease: 'easeInOut',
+              delay: 0.6
+            }}
+          >
+            <Button text="Resume" link={NAVBAR_RESUME} />
+          </motion.div>
         </div>
       </div>
     </nav>
   )
 }
+
 export default Navbar
