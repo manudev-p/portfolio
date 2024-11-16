@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, createContext } from 'react'
 
 import Head from 'next/head'
 import Email from '@/components/Email'
@@ -17,8 +17,11 @@ import Experience from '@/sections/Experience'
 // localization
 // animation
 const HEADER_TITLE = 'Manu Pirez'
+const LANG = 'es'
 
-function Index() {
+export const LangContext = createContext('')
+
+const Index = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [showContent, setShowContent] = useState(false)
 
@@ -33,22 +36,24 @@ function Index() {
         <title>{HEADER_TITLE}</title>
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
-      {showContent && (
-        <>
-          <Navbar />
-          <SocialIcons />
-          <Email />
-          <main>
-            <Hero />
-            <About />
-            <Experience />
-            <Projects />
-            <Contact />
-          </main>
-          <Footer />
-        </>
-      )}
-      <Loader isLoading={isLoading} setIsLoading={handleLoaderLoaded} />
+      <LangContext.Provider value={LANG}>
+        {showContent && (
+          <>
+            <Navbar />
+            <SocialIcons />
+            <Email />
+            <main>
+              <Hero />
+              <About />
+              <Experience />
+              <Projects />
+              <Contact />
+            </main>
+            <Footer />
+          </>
+        )}
+        <Loader isLoading={isLoading} setIsLoading={handleLoaderLoaded} />
+      </LangContext.Provider>
     </div>
   )
 }

@@ -48,8 +48,8 @@ function About() {
       </div>
       <div className="about-grid">
         <div className="about-grid-info">
-          {ABOUT_PARAGRAPH.map(paragraph => (
-            <p className="about-grid-info-text">
+          {ABOUT_PARAGRAPH.map((paragraph, i) => (
+            <p key={i} className="about-grid-info-text">
               {replaceLinks(paragraph, LINKS)}
             </p>
           ))}

@@ -1,69 +1,22 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
+import { useContext } from 'react'
 import { FiGithub, FiExternalLink } from 'react-icons/fi'
 import { motion } from 'framer-motion'
 
-function Projects() {
-  const projectsData = [
-    {
-      image: '/project1.png',
-      projectName: 'Pokedex',
-      projectLink: 'https://netlify.com',
-      projectDescription:
-        " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.",
-      projectTech: [
-        'React',
-        'Redux Toolkit',
-        'SCSS',
-        'Firebase',
-        'Typescript',
-        'PokeApi'
-      ],
-      projectExternalLinks: {
-        github: '',
-        externalLink: ''
-      }
-    },
-    {
-      image: '/project2.png',
-      projectName: 'Realtime Chat App',
-      projectLink: 'https://netlify.com',
-      projectDescription:
-        " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.",
-      projectTech: [
-        'React',
-        'Sockets',
-        'Node.js',
-        'Express',
-        'MongoDB',
-        'Styled Components'
-      ],
-      projectExternalLinks: {
-        github: '',
-        externalLink: ''
-      }
-    },
-    {
-      image: '/project3.png',
-      projectName: 'Netflix App',
-      projectLink: 'https://netlify.com',
-      projectDescription:
-        " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.",
-      projectTech: [
-        'React',
-        'Node.js',
-        'Firebase',
-        'MongoDB',
-        'Express',
-        'Redux Toolkit'
-      ],
-      projectExternalLinks: {
-        github: '',
-        externalLink: ''
-      }
-    }
-  ]
+import Image from 'next/image'
+import Link from 'next/link'
+
+import content from '@/static/content/content.json'
+
+import { LangContext } from '@/pages'
+
+const Projects = () => {
+  const lang: string = useContext(LangContext)
+
+  const projects = { ...content.content[lang].sections.projects }
+  const projectsData = projects.work
+  const title = projects.title
+  const subTitle = projects.subTitle
+
   return (
     <div className="projects" id="work">
       <motion.div
@@ -77,14 +30,14 @@ function Projects() {
           hidden: { opacity: 0, y: 0 }
         }}
       >
-        <h2>Some Things I’ve Built</h2>
+        <h2>{title}</h2>
       </motion.div>
       <div className="projects-container">
         {projectsData.map(
           ({
             image,
             projectDescription,
-            projectLink,
+            //projectLink,
             projectExternalLinks,
             projectName,
             projectTech
@@ -109,13 +62,13 @@ function Projects() {
                   </div>
                 </div>
                 <div className="project-info">
-                  <p className="project-info-overline">Featured Project</p>
+                  <p className="project-info-overline">{subTitle}</p>
                   <h3 className="project-info-title">{projectName}</h3>
                   <div className="project-info-description">
                     <p>{projectDescription}</p>
                   </div>
                   <ul className="project-info-tech-list">
-                    {projectTech.map(tech => (
+                    {projectTech.map((tech: string) => (
                       <li className="project-info-tech-list-item" key={tech}>
                         {tech}
                       </li>
