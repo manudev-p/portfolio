@@ -7,7 +7,7 @@
   align-items: center;
   flex-direction: column;
   .contact-title {
-    color: var(--theme-color);
+    color: var(--title);
     font-size: var(--tbase);
     font-family: var(--fira-code);
     font-weight: 300;
@@ -15,16 +15,16 @@
       counter-increment: title;
       content: '0' counter(title) '.';
       margin-right: 0.5rem;
-      color: var(--theme-color);
+      color: var(--image-border);
     }
   }
   .contact-sub-title {
     font-size: var(--tgiant);
     font-family: var(--raleway);
-    color: var(--light-slate);
+    color: var(--highlight);
   }
   .contact-text {
-    color: var(--slate);
+    color: var(--text);
     font-size: var(--tlarge);
     letter-spacing: 0.07rem;
     line-height: 1.6rem;

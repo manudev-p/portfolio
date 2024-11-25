@@ -1,23 +1,50 @@
 :root {
-  --navy-shadow: rgba(2, 12, 27, 0.7);
-  --background-color: #0a192f;
-  --lightest-navy: #233554;
-  --light-navy: #112240;
-  --dark-slate: #495670;
-  --slate: #8892b0;
-  --light-slate: #ccd6f6;
-  --lightest-slate: #a8b2d1;
-  --theme-color: #9d00ff;
+  --beige: #fffcf2;
+  --beige-trans: #fffcf2c2;
+  --dark-beige: #ccc5b9;
+  --gray: #403d39;
+  --almost-black: #252422;
+  --orange: #eb5e28;
+  --light-orange: #eb8259;
+
+  /* page */
+  --background-color: var(--beige);
+  --scrollbar: var(--almost-black);
+  --selection: var(--gray);
+  /* generic */
+  --text: var(--almost-black);
+  --title: var(--gray);
+  --link: var(--orange);
+  --highlight: var(--orange);
+  --highlight-low: var(--light-orange);
+  --bg: var(--beige);
+  --bg-trans: var(--beige-trans);
+  --image-border: var(--almost-black);
+  --focus: var(--almost-black);
+  /* nav */
+  --nav-link: var(--gray);
+  --nav-index: var(--almost-black);
+  --nav-burger: var(--almost-black);
+  /* project */
+  --project-image-overlay-sm: var(--beige);
+  --project-description-subtitle-hover: var(--almost-black);
+  --project-description-iconlink: var(--gray);
+  --project-description-iconlink-hover: var(--almost-black);
+  /* socialIcons */
+  --item-color: var(--gray);
+}
+
+.theme-dark {
 }
 
 ::-moz-selection {
   color: white;
-  background: var(--theme-color);
+  background: var(--selection);
 }
 
 ::selection {
   color: white;
-  background: var(--theme-color);
+  background: var(--selection);
 }
 
 html,
@@ -48,7 +75,7 @@ main {
 
 html {
   scrollbar-width: thin;
-  scrollbar-color: var(--dark-slate) var(--background-color);
+  scrollbar-color: var(--scrollbar) var(--background-color);
 }
 ::-webkit-scrollbar {
   width: 12px;
@@ -57,7 +84,7 @@ html {
   background: var(--background-color);
 }
 ::-webkit-scrollbar-thumb {
-  background-color: var(--dark-slate);
+  background-color: var(--highlight);
   border: 3px solid var(--background-color);
   border-radius: 10px;
 }

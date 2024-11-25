@@ -10,7 +10,7 @@ nav {
     position: relative;
     .brand {
       a {
-        color: var(--theme-color);
+        color: var(--nav-link);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -22,17 +22,17 @@ nav {
         outline: 2px dashed transparent;
         transition: 0.3s ease-in-out;
         &:hover {
-          fill: #64fad91a;
+          fill: var(--focus);
         }
         &:focus {
-          outline-color: var(--theme-color);
-          fill: #64fad91a;
+          outline-color: var(--focus);
+          fill: var(--focus);
         }
       }
     }
     .nav-responsive-toggle {
       display: none;
-      color: var(--theme-color);
+      color: var(--nav-burger);
       font-size: var(--tlarge2);
       justify-content: center;
       align-items: center;
@@ -42,7 +42,7 @@ nav {
     .nav-items {
       display: flex;
       gap: 3em;
-      color: var(--lightest-slate);
+      color: var(--nav-index);
       font-family: var(--fira-code);
       font-weight: 500;
       font-size: var(--tsm1);
@@ -57,18 +57,23 @@ nav {
             padding: 10px;
             text-decoration: none;
             color: inherit;
-            transition: 0.3s ease-in-out;
+            transform-origin: bottom right;
+            transform: scaleX(0);
+            transition: transform 0.25s ease-out;
             &::before {
               counter-increment: nav-list;
               content: '0' counter(nav-list) '. ';
-              color: var(--theme-color);
+              color: var(--nav-index);
             }
           }
           a:focus {
-            outline-color: var(--theme-color);
+            outline-color: var(--focus);
           }
           &:hover {
-            color: var(--theme-color);
+            color: var(--focus);
+            //text-decoration: underline;
+            transform: scaleX(1);
+            transform-origin: bottom left;
           }
         }
       }
@@ -114,8 +119,6 @@ nav {
     top: 0;
     transition: 0.9s ease-in-out;
     z-index: 100;
-    background-color: rgba(10, 25, 47, 0.85);
-    box-shadow: 0 10px 30px -10px var(--navy-shadow);
     backdrop-filter: blur(10px);
   }
 }

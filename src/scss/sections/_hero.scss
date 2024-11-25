@@ -7,20 +7,20 @@
   justify-content: center;
   min-height: 60vh;
   &-title {
-    color: var(--theme-color);
+    color: var(--title);
     font-size: var(--tsm2);
     font-family: var(--fira-code);
   }
   &-title-large {
     font-size: var(--tgiant);
     font-family: var(--raleway);
-    color: var(--light-slate);
+    color: var(--highlight);
   }
   &-title-sub {
-    color: var(--lightest-slate);
+    color: var(--title);
   }
   &-text {
-    color: var(--slate);
+    color: var(--text);
     margin-right: 40%;
     font-size: var(--tlarge);
     letter-spacing: 0.07rem;

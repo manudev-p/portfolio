@@ -15,16 +15,16 @@
       align-items: center;
       &-link {
         padding: 10px;
-        color: var(--lightest-slate);
+        color: var(--item-color);
         transition: 0.3s ease-in-out;
         outline: 2px dashed transparent;
         &:hover {
-          color: var(--theme-color);
+          color: var(--highlight);
         }
         &:focus {
-          outline-color: var(--theme-color);
+          outline-color: var(--focus);
           transform: translateY(-4px);
-          color: var(--theme-color);
+          color: var(--highlight);
         }
       }
       &:hover {
@@ -40,7 +40,7 @@
       width: 2px;
       height: 90px;
       margin: 0px auto;
-      background-color: var(--light-slate);
+      background-color: var(--highlight);
     }
   }
   @media screen and (max-width: 1080px) {

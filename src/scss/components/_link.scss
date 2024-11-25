@@ -2,17 +2,17 @@
   text-decoration: none;
   display: inline-block;
   position: relative;
-  color: var(--theme-color);
+  color: var(--highlight);
   &:after {
     content: '';
     position: absolute;
     width: 100%;
-    transform: scaleX(0);
     height: 0.5px;
     bottom: 0;
     left: 0;
-    background-color: var(--theme-color);
+    background-color: var(--highlight);
     transform-origin: bottom right;
+    transform: scaleX(0);
     transition: transform 0.25s ease-out;
   }
   &:hover,
